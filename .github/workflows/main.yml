@@ -26,3 +26,6 @@ jobs:
 
     - name: Run style linting
       run: pylint *.py
+
+    - name: Run help
+      run: ./crawler.py --help
