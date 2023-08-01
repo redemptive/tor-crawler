@@ -21,5 +21,8 @@ jobs:
     - name: Pip install dev dependencies
       run: pip install -r ./requirements-dev.txt
 
-    - name: Run linting
+    - name: Run type linting
       run: pytype .
+
+    - name: Run style linting
+      run: pylint *.py

@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
+""" This file is for blah blah blah """
 import argparse
 import requests
 
-def request(url, args):
+def request(url, options):
+    """ This file is for blah blah blah """
     retries = 0
-    while retries <= args.retries:
+    while retries <= options.retries:
         res = session.get(url, timeout=60)
 
         if res.status_code != 504:
             break
-        elif args.verbose:
+
+        if options.verbose and res.status_code != 504:
             print(f"Call to {url} failed with {res.status_code}. Retrying...")
 
         retries += 1
@@ -18,7 +21,7 @@ def request(url, args):
 
 parser = argparse.ArgumentParser(description="This is Darkweb Crawler")
 
-parser.add_argument("-r", "--retries", type=int, default=5 ,help="How many retries if a request fails")
+parser.add_argument("-r", "--retries", type=int, default=5 ,help="Retries if a request fails")
 parser.add_argument("-v", "--verbose", action="store_true")
 
 args = parser.parse_args()
@@ -29,14 +32,14 @@ session.proxies = {
     'https': 'socks5h://localhost:9050'
 }
 
-res = request('http://httpbin.org/ip', args)
+out = request('http://httpbin.org/ip', args)
 
-print(res)
-print(res.text)
-print(res.status_code)
+print(out)
+print(out.text)
+print(out.status_code)
 
-res = request('http://facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion', args)
+out = request('http://facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion', args)
 
-print(res)
-print(res.text)
-print(res.status_code)
+print(out)
+print(out.text)
+print(out.status_code)
