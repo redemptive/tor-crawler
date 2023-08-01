@@ -1,0 +1,22 @@
+name: Test
+
+on:
+ 
+  push:
+    branches: 
+      - main
+
+jobs:
+  
+  build:
+    
+    name: Test
+    runs-on: ubuntu-latest
+   
+    steps:
+
+    - name: Pip install dev dependencies
+      run: pip install -r ./requirements-dev.txt
+
+    - name: Run linting
+      run: pytype .
