@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ This file is for blah blah blah """
 import argparse
-from tokenize import String
 import requests
 
 def request(url, options):
@@ -22,7 +21,7 @@ def request(url, options):
 
 parser = argparse.ArgumentParser(description="This is Darkweb Crawler")
 
-parser.add_argument("-p", "--proxy", type=str, default="socks5h://localhost:9050" ,help="Proxy running tor")
+parser.add_argument("-p", "--proxy", type=str, default="socks5h://localhost:9050" ,help="Torproxy")
 parser.add_argument("-r", "--retries", type=int, default=5 ,help="Retries if a request fails")
 parser.add_argument("-v", "--verbose", action="store_true")
 
